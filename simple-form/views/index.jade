@@ -3,3 +3,9 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  - var newData = 'New Data';
+  h2= newData
+  ul
+    each value in intArray
+      li= value
+    
