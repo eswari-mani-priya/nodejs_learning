@@ -1,0 +1,17 @@
+<h1>{{ title }}</h1>
+<p>Welcome to {{ title }}</p>
+{{# if condition }}
+<p>True</p>
+{{ else }}
+<p>False</p>
+{{/if}}
+<ul>
+  {{# each intArray }}
+    <li>{{ this }}</li>
+  {{/each}}
+</ul>
+<ul>
+  {{# each intArray as |val key|}}
+    <li>{{ key }} : {{ val }}</li>
+  {{/each}}
+</ul>
