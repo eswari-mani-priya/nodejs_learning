@@ -37,8 +37,8 @@ router.post('/update', async function(req, res, next) {
   };
   var id = req.body.id;
   var item_1 = await userData.find({'_id': db.id(id)});
-  console.log('Item1:'+item_1);
-  userData.update(item_1._id, {$set: {content: item}})
+  console.log(item_1);
+  userData.update(item_1[0], {$set: item})
   // userData.update({id: item});
   res.redirect('/');
 });
@@ -46,7 +46,7 @@ router.post('/update', async function(req, res, next) {
 router.post('/delete', function(req, res, next) {
   var id = req.body.id;
   // userData.remove({'_id': db.id(id)});
-  userData.removeById(id);
+  userData.remove(id);
   res.redirect('/');
 });
 
