@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head><title>ES6 Basics</title></head>
+    <body>
+        <h1>let and const</h1>
+        <p id="test1"></p>
+        <p id="test2"></p>
+        <script>
+            let x = 10;
+            {
+                const x = 2;
+                document.getElementById("test2").innerHTML = x;
+            }
+            document.getElementById("test1").innerHTML = x;
+        </script>
+        <h1>Arrow functions</h1>
+        <p id="test3"></p>
+        <script>
+            const data = (x, y) => { return x * y };
+            document.getElementById("test3").innerHTML = data(1,2);
+        </script>
+        <h1>For/of loop</h1>
+        <p id="test4"></p>
+        <script>
+            var fruits = ['Apples', 'Oranges', 'Peaches'];
+            var text = "";
+            for (let fruit of fruits){
+                text += fruit + "</br>";
+            };
+            document.getElementById("test4").innerHTML = text;
+        </script>
+        <h1>Javascript Maps</h1>
+        <p id="test5"></p>
+        <p id="test6"></p>
+        <script>
+            const apples = {name: 'Apples'};
+            const oranges = {name: 'Oranges'};
+            const peaches = {name: 'Peaches'};
+            document.getElementById("test5").innerHTML = peaches.name;
+
+            var fruits1 = new Map();
+            fruits1.set(apples, 500);
+            fruits1.set(oranges, 300);
+            fruits1.set(peaches, 200);
+            let fdata = "";
+            fruits1.forEach (function(value, key) {
+                fdata += key.name + ' = ' + value + "<br>";
+            })
+            document.getElementById("test6").innerHTML = fdata;
+        </script>
+        <h1>JavaScript SETS(Unique data just like python sets)</h1>
+        <p id="test7"></p>
+        <script>
+            const letters = new Set();
+            letters.add('a');
+            letters.add('b');
+            letters.add('c');
+            letters.add('a');
+            let gettext = "";
+            letters.forEach (function(value){
+                gettext += value + "<br>"
+            })
+            document.getElementById("test7").innerHTML = gettext;
+        </script>
+    </body>
+</html>

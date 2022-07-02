@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ES6 Intermediate</title>
+    </head>
+    <h1>Classes</h1>
+    <p id="test1"></p>
+    <script>
+        class Car {
+            constructor(name, year){
+                this.name = name;
+                this.year = year;
+            }
+            age(x) {
+                return x - this.year;
+            }
+        }
+        let date = new Date()
+        year = date.getFullYear()
+        const myCar = new Car('Ford', 2018);
+        document.getElementById("test1").innerHTML = myCar.name + ' : ' + myCar.year + ' which is ' + myCar.age(year) + 'years old.';
+    </script>
+    <h1>JavaScript Promises</h1>
+    <p>Wait 5 seconds</p>
+    <p id="test2"></p>
+    <script>
+       const myPromise = new Promise(function(myResolve, myReject) {
+        setTimeout(function() { myResolve("I Love You!!"); }, 5000)
+       });
+       myPromise.then(function(value){
+        document.getElementById("test2").innerHTML = value;
+       });
+    </script>
+    <h1>Javascript Symbol</h1>
+    <p id="test3"></p>
+    <script>
+        const person = {
+            firstName: 'Priya',
+            lastName: 'G',
+            age: 0,
+            eyeColor: 'black',
+        };
+
+        let id = Symbol('id');
+        person['id'] = 157382;
+        document.getElementById("test3").innerHTML = person['id'];
+    </script>
+    <h1>Default Parameters</h1>
+    <p id="test4"></p>
+    <script>
+        function myFunction(x, y = 10) { 
+            return x + y;
+        };
+        document.getElementById("test4").innerHTML = myFunction(5);
+    </script>
+    <h1>Rest parameters</h1>
+    <p id="test5"></p>
+    <script>
+        function sum(...args) {
+            let sum = 0;
+            for (let value of args) {
+                sum += value;
+            };
+            return sum;
+        };
+        document.getElementById("test5").innerHTML = sum(1,2,3,4,5,6,7,8,9,10,11,12);
+    </script>
+    <h1>String includes, startswith and endswith</h1>
+    <p id="test6"></p>
+    <p id="test7"></p>
+    <p id="test8"></p>
+    <script>
+        let text = "Hello world! is the basic program for any programming language";
+        document.getElementById("test6").innerHTML = text.includes('world!');
+        document.getElementById("test7").innerHTML = text.startsWith('Hello');
+        document.getElementById("test8").innerHTML = text.endsWith('language');
+    </script>
+    <h1>Array functions(Array.from, keys(), find(), findIndex())</h1>
+    <p id="test9"></p>
+    <p id="test10"></p>
+    <p id="test11"></p>
+    <script>
+        let str = 'ABCDEF';
+        document.getElementById("test9").innerHTML = 'Array from string: ' + Array.from(str);
+        const fruits = ['Apples', 'Oranges', 'Mangoes', 'Bananas'];
+        const keys = fruits.keys();
+        let ftext = "";
+        for (let x of keys) {
+            ftext += x + "<br>";
+        }
+        document.getElementById("test10").innerHTML = 'Using keys(): ' + ftext;
+        const num_array = [3,4,6,8,9];
+        let first = num_array.find(myFunction1);
+        let findex = num_array.findIndex(myFunction1);
+        function myFunction1(value, index, array) {
+            return value > 6;
+        }
+        document.getElementById("test11").innerHTML = 'Using find and findIndex: ' + findex + ' , ' + first;
+    </script>
+    <h1>Math Methods(trunc, sign, cbrt, log2, log10)</h1>
+    <p id="test12"></p>
+    <p id="test13"></p>
+    <p id="test14"></p>
+    <p id="test15"></p>
+    <p id="test16"></p>
+    <script>
+        document.getElementById("test12").innerHTML = 'Using trunc: ' + Math.trunc(4.9);
+        document.getElementById("test13").innerHTML = 'Using sign: ' + Math.sign(-8);
+        document.getElementById("test14").innerHTML = 'Using cbrt(cuberoot): ' + Math.cbrt(8);
+        document.getElementById("test15").innerHTML = 'Using log2: ' + Math.log2(2);
+        document.getElementById("test16").innerHTML = 'Using log10: ' + Math.log10(10);
+    </script>
+    <h1>Number properties and Methods</h1>
+    <p id="test17"></p>
+    <p id="test18"></p>
+    <p id="test19"></p>
+    <p id="test20"></p>
+    <p id="test21"></p>
+    <script>
+        document.getElementById("test17").innerHTML = 'Getting Epsilon value: ' + Number.EPSILON;
+        document.getElementById("test18").innerHTML = 'Getting Min Safe Integer: ' + Number.MIN_SAFE_INTEGER;
+        document.getElementById("test19").innerHTML = 'Getting Max Safe Integer: ' + Number.MAX_SAFE_INTEGER;
+        document.getElementById("test20").innerHTML = 'Checking isInteger: ' + Number.isInteger(4.5);
+        document.getElementById("test21").innerHTML = 'Checking isSafeInteger: ' + Number.isSafeInteger(2178362897382);
+    </script>
+</html>
