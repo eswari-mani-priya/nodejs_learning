@@ -7,26 +7,33 @@ const init = async() => {
         host: 'localhost',
         port: 1234
     });
-    server.route({
+    server.route([{
         method: 'GET',
         path: '/',
         handler: (request, h) => {
             return "<h1>Hello World!</h1";
         }
-    });
-
-    server.route({
+    },
+    {
         method: 'GET',
         path: '/users/{user?}',
         handler: (request, h) => {
             if (request.params.user) {
                 return `<h1>Hello ${request.params.user}</h1>`;
             }else {
-                return "<h1>Hello Stranger!</h1>"
+                return h.redirect('/');
             }
             
         }
-    });
+    },
+    {
+        method: 'GET',
+        path: '/users/user-data/',
+        handler: (request, h) => {
+            return `<h1>${request.query.name} works for ${request.query.technology}</h1>`
+        }
+    }
+]);
 
     await server.start();
     console.log(`Server started on: ${server.info.uri}`);
