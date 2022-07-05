@@ -13,6 +13,9 @@ $ npm install @hapi/hapi
 -> Plugin is additional functionality added to your app.
 -> Installed hapi-geo-locate
 -> to serve static files installing @hapi/inert
+-> to show dynamic files installing @hapi/vision
+-> Now install templating engine - handlebars
+
 4. Declare routes using Hapi
 5. Document and Dry run using Hapi Swagger
 

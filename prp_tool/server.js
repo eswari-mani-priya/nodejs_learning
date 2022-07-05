@@ -34,13 +34,13 @@ const init = async() => {
         path: path.join(__dirname, 'views'),
         layout: 'default'
     })
-    server.route([{
-        method: 'GET',
-        path: '/',
-        handler: (request, h) => {
-            return h.file('welcome.html');
-        }
-    },
+    server.route([
+    //     method: 'GET',
+    //     path: '/',
+    //     handler: (request, h) => {
+    //         return h.file('welcome.html');
+    //     }
+    // },
     {
         method: 'GET',
         path: '/download',
@@ -87,12 +87,16 @@ const init = async() => {
 ]);
     server.route([{
         method: 'GET',
-        path: '/dynamic',
+        path: '/',
         handler: (request, h) => {
-            const data = {
-                name: 'Priya'
-            };
-            return h.view('index.html', data);
+            return h.view('index.html', {image: h.file('LearningPython.png')});
+        }
+    },
+    {
+        method: 'GET',
+        path: '/LearningPython.pdf',
+        handler: (request, h) => {
+            return h.file('LearningPython.pdf');
         }
     },
     {
