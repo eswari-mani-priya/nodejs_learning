@@ -4,10 +4,15 @@ Steps to create a simple CRUD application
 $ npm init # creates package.json
 create  server.js
 $ npm install @hapi/hapi
-'use strict'; - Strict mode prevents certain actions from being taken(accidentally creating global variable) and throws exceptions
-
+->'use strict'; - Strict mode prevents certain actions from being taken(accidentally creating global variable) and throws exceptions
+-> define const init which is an async function.
+-> get the server from Hapi.Server by providing host and port
+-> now add routes as you wish by providing method, path and handler data
 2. Define model(s)
 3. Register plugins
+-> Plugin is additional functionality added to your app.
+-> Installed hapi-geo-locate
+-> to serve static files installing @hapi/inert
 4. Declare routes using Hapi
 5. Document and Dry run using Hapi Swagger
 
