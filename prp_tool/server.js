@@ -2,6 +2,20 @@
 
 const Hapi = require('@hapi/hapi');
 const path = require('path');
+const Mongoose = require('mongoose');
+const Joi = require('joi');
+const { url } = require('inspector');
+
+Mongoose.connect("mongodb://localhost:27017/test", { useNewUrlParser: true });
+let Schema = Mongoose.Schema;
+let bookDataSchema = new Schema ({
+    title: String,
+    image: String,
+    file: String
+});
+
+let bookData = Mongoose.model('BookData', bookDataSchema);
+
 
 const init = async() => {
     const server = Hapi.Server({
@@ -34,13 +48,13 @@ const init = async() => {
         path: path.join(__dirname, 'views'),
         layout: 'default'
     })
-    server.route([
-    //     method: 'GET',
-    //     path: '/',
-    //     handler: (request, h) => {
-    //         return h.file('welcome.html');
-    //     }
-    // },
+    server.route([{
+        method: 'GET',
+        path: '/',
+        handler: (request, h) => {
+            return h.view('welcome.html');
+        }
+    },
     {
         method: 'GET',
         path: '/download',
@@ -87,9 +101,33 @@ const init = async() => {
 ]);
     server.route([{
         method: 'GET',
-        path: '/',
+        path: '/bookdata',
+        handler: async (request, h) => {
+            try {
+                var book = await bookData.find({}).lean().exec();
+                    return h.view('index.html', {data: book});
+            } catch(error) {
+                return h.response(error).code(500);
+            }   
+        }
+    },
+    {
+        method: 'POST',
+        path: '/book',
         handler: (request, h) => {
-            return h.view('index.html', {image: h.file('LearningPython.png')});
+            try {
+            const book = {
+                title: request.payload.title,
+                image: request.payload.image,
+                file: request.payload.book_file
+            }
+            var data = new bookData(book);
+            data.save();
+            console.log(data);
+            return h.redirect('/');
+        } catch(error) {
+            return h.response(error).code(500);
+        }
         }
     },
     {

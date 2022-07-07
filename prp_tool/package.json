@@ -14,6 +14,8 @@
     "@hapi/vision": "^6.1.0",
     "express": "^4.18.1",
     "handlebars": "^4.7.7",
-    "hapi-geo-locate": "^4.1.1"
+    "hapi-geo-locate": "^4.1.1",
+    "joi": "^17.6.0",
+    "mongoose": "^6.4.3"
   }
 }

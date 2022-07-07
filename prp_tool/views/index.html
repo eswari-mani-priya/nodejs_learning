@@ -1,5 +1,12 @@
 <div class="grid">
     <div class="gridItemContainer">
-        <a href="/LearningPython.pdf">LearningPython.pdf</a>
+        <!-- <p>{{ data }}</p> -->
+        {{# each data }}
+        <div>
+            <p>{{ this.title }}</p>
+            <a href={{ this.file }}><img src={{ this.image }} width="100" height="100" /></a>
+        </div>
+        {{/each}}
+        <!-- <a href="/LearningPython.pdf">LearningPython.pdf</a> -->
     </div>
 </div>
