@@ -1,18 +1,22 @@
-
-<form action="/book" method="POST">
-    <div>
-        <label>Book Title</label>
-        <input type="text" name="title">
-    </div>
-    <div>
-        <label>Book Image link</label>
-        <input type="text" name="image">
-    </div>
-    <div>
-        <label>Book PDF Link</label>
-        <input type="text" name="book_file">
-    </div>
-    <div>
-        <input type="submit" value="Submit">
-    </div>
-</form>
+<div class="container">
+    <form action="/book" method="POST">
+        <div class="form-group">
+            <label for="title">Book Title:</label>
+            <input type="text" class="form-control" name="title">
+        </div>
+        <div class="form-group">
+            <label for="image">Book Image link:</label>
+            <input type="text" class="form-control" name="image">
+        </div>
+        <div class="form-group">
+            <label for="book_file">Book PDF Link:</label>
+            <input type="text" class="form-control" name="book_file">
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+    <a href='/'>
+        <button class="btn btn-primary">
+            View Books
+        </button>
+    </a>
+</div>

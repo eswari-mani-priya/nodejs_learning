@@ -1,12 +1,11 @@
-<div class="grid">
-    <div class="gridItemContainer">
-        <!-- <p>{{ data }}</p> -->
-        {{# each data }}
-        <div>
+<div class="container">
+    <div class="row">
+    <!-- <p>{{ data }}</p> -->
+    {{# each data }}
+        <div class="col-lg-3">
             <p>{{ this.title }}</p>
-            <a href={{ this.file }}><img src={{ this.image }} width="100" height="100" /></a>
+            <a href={{ this.file }}><img src={{ this.image }} width="200" height="250"/></a>
         </div>
-        {{/each}}
-        <!-- <a href="/LearningPython.pdf">LearningPython.pdf</a> -->
+    {{/each}}
     </div>
 </div>

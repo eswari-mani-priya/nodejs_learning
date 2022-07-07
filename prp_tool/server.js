@@ -50,61 +50,18 @@ const init = async() => {
     })
     server.route([{
         method: 'GET',
-        path: '/',
+        path: '/adddata',
         handler: (request, h) => {
             return h.view('welcome.html');
         }
     },
     {
         method: 'GET',
-        path: '/download',
-        handler: (request, h) => {
-            return h.file('welcome.html', {
-                // mode: "attachment", //downloads as attachment
-                mode: "inline", //shows in same page
-                filename: 'welcome-download.html'
-            });
-        }
-    },
-    {
-        method: 'GET',
-        path: '/users/{user?}',
-        handler: (request, h) => {
-            if (request.params.user) {
-                return `<h1>Hello ${request.params.user}</h1>`;
-            }else {
-                return '<h1>Users Page</h1>'
-            }
-            
-        }
-    },
-    {
-        method: 'GET',
-        path: '/users/user-data/',
-        handler: (request, h) => {
-            return `<h1>${request.query.name} works for ${request.query.technology}</h1>`
-        }
-    },
-    {
-        method: 'GET',
-        path: '/location',
-        handler: (request, h) => {
-            if (request.location) {
-                return h.view('location', {location: request.location.ip});
-            }else {
-                return h.view('location', {location: "Your location is not Enabled!"});
-            }
-
-            
-        }
-    }
-]);
-    server.route([{
-        method: 'GET',
-        path: '/bookdata',
+        path: '/',
         handler: async (request, h) => {
             try {
                 var book = await bookData.find({}).lean().exec();
+                    // console.log(book);
                     return h.view('index.html', {data: book});
             } catch(error) {
                 return h.response(error).code(500);
@@ -131,21 +88,13 @@ const init = async() => {
         }
     },
     {
-        method: 'GET',
-        path: '/LearningPython.pdf',
+        method: "GET",
+        path: '/delete',
         handler: (request, h) => {
-            return h.file('LearningPython.pdf');
-        }
-    },
-    {
-        method: 'POST',
-        path: '/login',
-        handler: (request, h) => {
-            if (request.payload.username == "Priya" && request.payload.password == '1234') {
-                return h.view('logged-in.html', {username: request.payload.username});
-            }else{
-                return h.redirect('/');
-            }
+            const id = request.query.id;
+            console.log(id);
+            bookData.findByIdAndRemove(id).exec();
+            return h.redirect('/bookdata');
         }
     }
 ]);
